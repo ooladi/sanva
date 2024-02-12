@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', function(){
   
   // Variables and consts
-  const url_phrases = './phrases.json';
-  let phrasesList = {};
+  const phrasesArray = [
+    "haré lo que quieras",
+    "pero porque no :(",
+    "te daré muchos besitos",
+    "dale di que si pues",
+    "bien miedosa eres",
+    "mmm pienso",
+    "siiiiii porfisss",
+    "toi asao"
+  ];
   let phraseCounter = [];
   let moshiCounter = [];
   
   const confettiValues = { 
-    emojis: ['🌈', '💋', '😘', '😍', '🥰', '💖', '💗'],
+    emojis: ['💜','🤍', '💛', '🧡', '💙', '❤️'],
     emojiSize: 100,
     confettiNumber: 30,
   }
@@ -22,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function(){
   // Events
   yes_btn.addEventListener('click', yesEvents);
   no_btn.addEventListener('click', noEvents);
-  chargeJSON();
   showMoshi();
 
   // Functions
@@ -33,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(phrase === 'END') {
       no_btn.style.setProperty("display", "none");
     } else {
-      no_btn.textContent=phrase;
+      no_btn.textContent = phrase;
     }
     
     deleteMoshi();
@@ -41,45 +48,33 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   
   function yesEvents() {
-    title.innerHTML = 'Sabía que ibas a aceptar 😘';
+    title.innerHTML = 'muamua t quiero Oladi';
     no_btn.style.setProperty("display", "none");
     yes_btn.style.setProperty("display", "none");
     deleteMoshi();
     createMoshi(9);
 
     repitConfetti();
-
   }
 
   function setRandomPhrase() {
-    const phrasesList_length = Object.keys(phrasesList).length;
-    const randomNumber = Math.ceil(Math.random()*(Object.keys(phrasesList).length));
+    const phrasesArrayLength = phrasesArray.length;
+    const randomNumber = Math.ceil(Math.random() * phrasesArrayLength);
 
-    if(phrasesList_length === phraseCounter.length) {
+    if (phrasesArrayLength === phraseCounter.length) {
       return 'END';
     }
 
-    if(!phraseCounter.includes(randomNumber)) {
+    if (!phraseCounter.includes(randomNumber)) {
       phraseCounter.push(randomNumber);
-      phraseNumber = `p_${randomNumber}`;
-      return phrasesList[phraseNumber];
+      return phrasesArray[randomNumber - 1];
     } else {
       return setRandomPhrase();
     }
   }
 
-  async function chargeJSON() {
-    try {
-      const response = await fetch(url_phrases);
-      const { phrases } = await response.json()
-      phrasesList = phrases;
-    } catch (error) {
-      console.error('Error: ', error);
-    }
-  }
-
   function releaseConfetti() {
-    if(screen.width > 430) {
+    if (screen.width > 430) {
       confettiValues.emojiSize = 40;
     } else {
       confettiValues.emojiSize = 100;
@@ -93,13 +88,13 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function showMoshi() {
-    const randomNumber = Math.ceil(Math.random()*10);
+    const randomNumber = Math.ceil(Math.random() * 10);
 
-    if(moshiCounter.length === 10) {
+    if (moshiCounter.length === 10) {
       return;
     }
 
-    if(!moshiCounter.includes(randomNumber)){
+    if (!moshiCounter.includes(randomNumber)) {
       moshiCounter.push(randomNumber);
       createMoshi(randomNumber)
     } else {
@@ -117,4 +112,4 @@ document.addEventListener('DOMContentLoaded', function(){
     moshi_container.removeChild(moshi_container.firstChild); 
   }
 
-})
+});
