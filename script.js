@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
   let moshiCounter = [];
   
   const confettiValues = { 
-    emojis: ['💜','🤍', '💛', '🧡', '💙', '❤️'],
+    
     emojiSize: 100,
     confettiNumber: 30,
   }
