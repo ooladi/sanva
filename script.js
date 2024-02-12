@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
   // Variables and consts
   const phrasesArray = [
-    "haré lo que quieras",
+    "aaa aaaaaa",
     "pero porque no :(",
     "te daré muchos besitos",
     "dale di que si pues",
