@@ -25,11 +25,78 @@
       rel="stylesheet"
     />
   </head>
+  <style>
+    .holi {
+      display: flex;
+      position: fixed; /* Cambiado a posición fija */
+      top: 0; /* Asegura que el elemento esté en la parte superior de la pantalla */
+      left: 0; /* Asegura que el elemento esté en la parte izquierda de la pantalla */
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Ajusta el z-index según sea necesario */
+    }
+    
+    .imgholi {
+      width: 20%; /* Hace que la imagen sea responsive */
+      height: auto; /* Mantiene la proporción de aspecto de la imagen */
+    }
+
+    #boton-chick {
+      width: 20%;
+      margin-top: 20px; /* Agrega espacio entre la imagen y el botón */
+      background-color: #ff69b4;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    #boton-chick:hover {
+      background-color: #ff4f99;
+    }
+    @media screen and (max-width: 768px) {
+      .imgholi {
+        width: 50%; /* Hace que la imagen sea responsive */
+      }
+      #boton-chick {
+        width: 50%;
+      }
+    }
+  </style>
+  <script>
+    function reproducirCancion() {
+      var holiElement = document.querySelector(".holi");
+      var ccc = document.querySelector(".container");
+      if (holiElement) {
+        holiElement.style.display = "none";
+        ccc.style.display = "grid";
+      }
+      // Crea un elemento de audio
+      var audio = new Audio("only.mp3");
+      // Reproduce el archivo de audio
+      audio.volume = 0.5;
+      // Adelanta 3.1 segundos en la reproducción
+      audio.currentTime = 3.1;
+      // Habilita la reproducción en bucle
+      audio.loop = true;
+      audio.play();
+    }
+  </script>
   <body>
-    <div class="container">
+    <div class="holi">
+      <img class="imgholi" src="./assets/holi.gif" alt="Descripción del GIF" />
+      <button id="boton-chick" onclick="reproducirCancion()">♥️</button>
+    </div>
+    <div class="container" style="display:none;"">
       <div class="flex">
         <div class="title">
-          <h1 id="title_h1">¿Quieres ser mi San Valentín?</h1>
+          <h1 id="title_h1">¿Puedes ser mi San Valentín?</h1>
         </div>
         <div class="moshi" id="moshiContainer"></div>
         <div class="buttons">
