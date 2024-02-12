@@ -1,0 +1,21 @@
+footer{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 96%;
+
+  width: 100%;
+  margin: 0;
+  font-size: 1.4rem;
+  
+}
+
+.footer_paragraph{
+  display: flex;
+  gap: 4px;
+
+  a {
+    color: #f82f7c;
+    font-weight: bold;
+  }
+}
